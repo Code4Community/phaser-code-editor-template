@@ -1,49 +1,58 @@
-# Phaser 3 Webpack Project Template
+# Phaser 3 + Code4Community Language Example Project
 
-A Phaser 3 project template with ES6 support via [Babel 7](https://babeljs.io/) and [Webpack 4](https://webpack.js.org/) that includes hot-reloading for development and production-ready builds.
+This project uses the [Phaser 3 Project Template](https://github.com/photonstorm/phaser3-project-template). Read more about everything not related to our language library there.
 
-This has been updated for Phaser 3.50.0 version and above.
+## Using the Language Library
 
-Loading images via JavaScript module `import` is also supported, although not recommended.
+1.  Install this library in your project. You can do that from github or from a local directory. For local development, the directory is best. These exact commands may not work.
+
+        npm install --save code4community/code-editor-and-interpreter
+        
+    OR
+    
+        npm install --save file://$HOME/school/c4c-club/code-editor-and-interpreter/
+
+2.  Create the editor.
+
+    ```javascript
+    // Create the C4C editor, inside the given element.
+    C4C.editor.create(document.body);
+    ```
+    
+3.  Create some javascript functions you would like to expose to the this library's language. For our example, the javascript function just creates an alert.
+
+    ```javascript
+    // Define new function and store it in the symbol "alert-hello". This
+    // function can now be called from our little language.
+    C4C.interpreter.define("alert-hello", () => {
+      alert("hello");
+    });
+    ```
+
+4.  Expose some way for your user to run the interpreter. For our example, the user can just on click a sprite.
+
+    ```javascript
+    // Create some interface to running the interpreter.
+    const logo = this.add.image(400, 150, 'logo');
+
+    logo.setInteractive();
+    logo.on("pointerdown", () => {
+      const programText = C4C.editor.getText();
+      // HERE'S THE IMPORTANT PART!!
+      C4C.interpreter.run(programText);
+    });
+    ```
 
 ## Requirements
 
 [Node.js](https://nodejs.org) is required to install dependencies and run scripts via `npm`.
 
+[Our Language and Editor Library](https://github.com/Code4Community/code-editor-and-interpreter) may not be easily installed through npm. This will be fixed soon.
+
 ## Available Commands
 
-| Command | Description |
-|---------|-------------|
-| `npm install` | Install project dependencies |
-| `npm start` | Build project and open web server running project |
+| Command         | Description                                                                     |
+|-----------------|---------------------------------------------------------------------------------|
+| `npm install`   | Install project dependencies                                                    |
+| `npm start`     | Build project and open web server running project                               |
 | `npm run build` | Builds code bundle with production settings (minification, uglification, etc..) |
-
-## Writing Code
-
-After cloning the repo, run `npm install` from your project directory. Then, you can start the local development server by running `npm start`.
-
-After starting the development server with `npm start`, you can edit any files in the `src` folder and webpack will automatically recompile and reload your server (available at `http://localhost:8080` by default).
-
-## Customizing the Template
-
-### Babel
-
-You can write modern ES6+ JavaScript and Babel will transpile it to a version of JavaScript that you want your project to support. The targeted browsers are set in the `.babelrc` file and the default currently targets all browsers with total usage over "0.25%" but excludes IE11 and Opera Mini.
-
- ```
-"browsers": [
-  ">0.25%",
-  "not ie 11",
-  "not op_mini all"
-]
- ```
-
-### Webpack
-
-If you want to customize your build, such as adding a new webpack loader or plugin (i.e. for loading CSS or fonts), you can modify the `webpack/base.js` file for cross-project changes, or you can modify and/or create new configuration files and target them in specific npm tasks inside of `package.json'.
-
-## Deploying Code
-
-After you run the `npm run build` command, your code will be built into a single bundle located at `dist/bundle.min.js` along with any other assets you project depended. 
-
-If you put the contents of the `dist` folder in a publicly-accessible location (say something like `http://mycoolserver.com`), you should be able to open `http://mycoolserver.com/index.html` and play your game.

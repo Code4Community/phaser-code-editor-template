@@ -33,6 +33,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "c4c-editor-and-interpreter": "file:../code-editor-and-interpreter",
     "phaser": "^3.50.0"
   }
 }
