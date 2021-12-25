@@ -13,35 +13,31 @@ export default class ExampleScene extends Phaser.Scene {
   }
 
   create() {
-    this.smiley = this.add.sprite(100, 100, "smiley");
-    //this.physics.enable(smiley, Phaser.Physics.ARCADE);
+    this.smiley = this.add.sprite(100, 150, "smiley");
+
     // Create the C4C editor, inside the given element.
 
     // This is the text for a program which calls the function stored in the
     // symbol "alert-hello". It starts with a line comment, and then a function
     // call.
-    C4C.editor.setText(`// Some testing
-not = function (a)
-if a
-false
-end`);
+    C4C.editor.setText(`moveRight(20)`);
 
     // Define new function and store it in the symbol "alert-hello". This
     // function can now be called from our little language.
-    C4C.interpreter.define("alert-hello", () => {
+    C4C.interpreter.define("alertHello", () => {
       alert("hello");
     });
 
-    C4C.interpreter.define("move-right", (x_dist) => {
+    C4C.interpreter.define("moveRight", (x_dist) => {
       this.smiley.x += x_dist;
     });
 
-    C4C.interpreter.define("move-left", (x_dist) => {
+    C4C.interpreter.define("moveLeft", (x_dist) => {
       this.smiley.x -= x_dist;
     });
 
     // Create some interface to running the interpreter.
-    const logo = this.add.image(400, 150, "logo");
+    const logo = this.add.image(400, 400, "logo");
 
     logo.setInteractive();
     logo.on("pointerdown", () => {
@@ -58,15 +54,5 @@ end`);
         fontSize: 32,
       }
     );
-
-    // Other Stuff
-    this.tweens.add({
-      targets: logo,
-      y: 450,
-      duration: 2000,
-      ease: "Power2",
-      yoyo: true,
-      loop: -1,
-    });
   }
 }
