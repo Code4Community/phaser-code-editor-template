@@ -23,8 +23,12 @@ class MyGame extends Phaser.Scene
     // This is the text for a program which calls the function stored in the
     // symbol "alert-hello". It starts with a line comment, and then a function
     // call.
-    C4C.editor.setText(`; This is a function call, for the function "alert-hello"
-(alert-hello)`);
+    C4C.editor.setText(`// Some testing
+not = function (a)
+if a
+false
+end
+end`);
 
     // Define new function and store it in the symbol "alert-hello". This
     // function can now be called from our little language.
