@@ -5,9 +5,13 @@ import ExampleScene from "./scenes/ExampleScene";
 C4C.editor.create(document.body);
 
 var config = {
+  parent: "body",
   type: Phaser.AUTO,
   width: 800,
   height: 600,
+  dom: {
+    createContainer: true,
+  },
   scene: [ExampleScene],
 };
 
