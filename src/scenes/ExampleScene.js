@@ -26,23 +26,23 @@ export default class ExampleScene extends Phaser.Scene {
     // This is the text for a program which calls the function stored in the
     // symbol "alert-hello". It starts with a line comment, and then a function
     // call.
-    C4C.editor.window.init(this);
-    C4C.editor.window.open();
-    C4C.editor.setText(`moveRight(20)`);
+    C4C.Editor.Window.init(this);
+    C4C.Editor.Window.open();
+    C4C.Editor.setText(`moveRight(20)`);
 
     this.smiley = this.add.sprite(400, 300, "smiley");
 
     // Define new function and store it in the symbol "alert-hello". This
     // function can now be called from our little language.
-    C4C.interpreter.define("alertHello", () => {
+    C4C.Interpreter.define("alertHello", () => {
       alert("hello");
     });
 
-    C4C.interpreter.define("moveRight", (x_dist) => {
+    C4C.Interpreter.define("moveRight", (x_dist) => {
       this.smiley.x += x_dist;
     });
 
-    C4C.interpreter.define("moveLeft", (x_dist) => {
+    C4C.Interpreter.define("moveLeft", (x_dist) => {
       this.smiley.x -= x_dist;
     });
 
@@ -53,9 +53,9 @@ export default class ExampleScene extends Phaser.Scene {
       .text(550, 100, "Evaluate", { fill: "#fff", fontSize: "30px" })
       .setInteractive()
       .on("pointerdown", () => {
-        const programText = C4C.editor.getText();
+        const programText = C4C.Editor.getText();
         // HERE'S THE IMPORTANT PART!!
-        C4C.interpreter.run(programText);
+        C4C.Interpreter.run(programText);
       })
       .on("pointerover", () => enterButtonHoverState(runButton))
       .on("pointerout", () => enterButtonRestState(runButton));
@@ -65,7 +65,7 @@ export default class ExampleScene extends Phaser.Scene {
       .text(500, 200, "Toggle Editor", { fill: "#fff", fontSize: "30px" })
       .setInteractive()
       .on("pointerdown", () => {
-        C4C.editor.window.toggle();
+        C4C.Editor.Window.toggle();
       })
       .on("pointerover", () => enterButtonHoverState(editorButton))
       .on("pointerout", () => enterButtonRestState(editorButton));

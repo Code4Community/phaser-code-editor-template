@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import C4C from "c4c-editor-and-interpreter";
 import ExampleScene from "./scenes/ExampleScene";
 
-C4C.editor.create(document.body);
+C4C.Editor.create(document.body, true);
 
 var config = {
   parent: "body",
