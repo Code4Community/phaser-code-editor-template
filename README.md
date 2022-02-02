@@ -56,3 +56,6 @@ This project uses the [Phaser 3 Project Template](https://github.com/photonstorm
 | `npm install`   | Install project dependencies                                                    |
 | `npm start`     | Build project and open web server running project                               |
 | `npm run build` | Builds code bundle with production settings (minification, uglification, etc..) |
+
+## Contribution Policy
+This project is closed to outside contributions.
