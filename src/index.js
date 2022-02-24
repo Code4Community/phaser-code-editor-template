@@ -2,7 +2,18 @@ import Phaser from "phaser";
 import C4C from "c4c-editor-and-interpreter";
 import ExampleScene from "./scenes/ExampleScene";
 
-C4C.Editor.create(document.body, true);
+// You can define a custom theme here and pass it into .create below
+const theme = {
+  "&": {
+    color: "red",
+    backgroundColor: "gray",
+  },
+  ".cm-content, .cm-gutter": {
+    minHeight: "600px",
+  }
+}
+
+C4C.Editor.create(document.body, null, true);
 
 var config = {
   parent: "body",
