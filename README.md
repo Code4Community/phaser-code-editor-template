@@ -19,6 +19,8 @@ This project uses the [Phaser 3 Project Template](https://github.com/photonstorm
     C4C.editor.create(document.body);
     ```
     
+    You can also pass in a theme for the editor and a flag which initially sets the editor to be invisible.
+    
 3.  Create some javascript functions you would like to expose to the this library's language. For our example, the javascript function just creates an alert.
 
     ```javascript
