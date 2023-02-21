@@ -1,5 +1,5 @@
 import Phaser from "phaser";
-import C4C from "c4c-editor-and-interpreter";
+import C4C from "c4c-lib";
 import ExampleScene from "./scenes/ExampleScene";
 
 // You can define a custom theme here and pass it into .create below

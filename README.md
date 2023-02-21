@@ -1,22 +1,22 @@
-# Phaser 3 + Code4Community Language Example Project
+# Phaser 3 + Code4Community Library Example Project
 
 This project uses the [Phaser 3 Project Template](https://github.com/photonstorm/phaser3-project-template). Read more about everything not related to our language library there.
 
 ## Using the Language Library
 
-1.  Install this library in your project. You can do that from github or from a local directory. For local development, the directory is best. These exact commands may not work.
+1.  Install this library in your project. You can do that from github or from a local directory. For local development, the directory is best. These exact commands should work.
 
-        npm install --save code4community/code-editor-and-interpreter
+        npm install --save code4community/c4c-lib
         
     OR
     
-        npm install --save file://$HOME/school/c4c-club/code-editor-and-interpreter/
+        npm install --save file://$HOME/school/c4c-club/c4c-lib/
 
 2.  Create the editor.
 
     ```javascript
     // Create the C4C editor, inside the given element.
-    C4C.editor.create(document.body);
+    C4C.Editor.create(document.body);
     ```
     
     You can also pass in a theme for the editor and a flag which initially sets the editor to be invisible.
@@ -26,7 +26,7 @@ This project uses the [Phaser 3 Project Template](https://github.com/photonstorm
     ```javascript
     // Define new function and store it in the symbol "alert-hello". This
     // function can now be called from our little language.
-    C4C.interpreter.define("alert-hello", () => {
+    C4C.Interpreter.define("alert-hello", () => {
       alert("hello");
     });
     ```
@@ -39,9 +39,9 @@ This project uses the [Phaser 3 Project Template](https://github.com/photonstorm
 
     logo.setInteractive();
     logo.on("pointerdown", () => {
-      const programText = C4C.editor.getText();
+      const programText = C4C.Editor.getText();
       // HERE'S THE IMPORTANT PART!!
-      C4C.interpreter.run(programText);
+      C4C.Interpreter.run(programText);
     });
     ```
 

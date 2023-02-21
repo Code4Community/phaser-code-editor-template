@@ -2,7 +2,7 @@ import Phaser from "phaser";
 import Physics from "phaser";
 import logoImg from "../assets/logo.png";
 import smileyImg from "../assets/smiley.png";
-import C4C from "c4c-editor-and-interpreter";
+import C4C from "c4c-lib";
 
 function enterButtonHoverState(btn) {
   btn.setStyle({ fill: "#ff0" });
