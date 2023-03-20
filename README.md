@@ -42,9 +42,9 @@ Install this library in your project. You can do that from github or from a loca
 2.  Create some javascript functions you would like to expose to the this library's language. For our example, the javascript function just creates an alert.
 
     ```javascript
-    // Define new function and store it in the symbol "alert-hello". This
+    // Define new function and associate it with the symbol "myAlert". This
     // function can now be called from our little language.
-    C4C.Interpreter.define("alert-hello", () => {
+    C4C.Interpreter.define("myAlert", () => {
       alert("hello");
     });
     ```
