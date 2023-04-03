@@ -46,6 +46,15 @@ export default class ExampleScene extends Phaser.Scene {
       this.smiley.x -= x_dist;
     });
 
+    // Create a runner
+    const runner = C4C.Runner.createRunner();
+
+    this.time.addEvent({
+      delay: 2000,
+      callback: () => { runner.step(); },
+      loop: true
+    });
+
     // Create some interface to running the interpreter:
 
     // Run Button
@@ -88,5 +97,20 @@ export default class ExampleScene extends Phaser.Scene {
           })
           .on("pointerover", () => enterButtonHoverState(checkButton))
           .on("pointerout", () => enterButtonRestState(checkButton));
+
+    // Run Button
+    const stepRunButton = this.add
+          .text(350, 400, "Evaluate With A Delay", { fill: "#fff", fontSize: "30px" })
+          .setInteractive()
+          .on("pointerdown", () => {
+            const programText = C4C.Editor.getText();
+            // HERE'S THE IMPORTANT PART!!
+            runner.setProgram(programText);
+            runner.reset();
+            // C4C.Interpreter.run(programText);
+          })
+          .on("pointerover", () => enterButtonHoverState(stepRunButton))
+          .on("pointerout", () => enterButtonRestState(stepRunButton));
+
   }
 }
