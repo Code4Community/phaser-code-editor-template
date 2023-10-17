@@ -8,10 +8,10 @@ const theme = {
   "&": {
     color: "red",
     backgroundColor: "gray",
-  }
-  // ".cm-content, .cm-gutter": {
-  //   minHeight: "600px",
-  // }
+  },
+  ".cm-content, .cm-gutter": {
+    minHeight: "600px",
+  },
 }
 
 C4C.Editor.create(document.body, null, true);
@@ -21,6 +21,13 @@ var config = {
   type: Phaser.AUTO,
   width: 1262,
   height: 346,
+  physics: {
+    default: 'arcade',
+    arcade: {
+        gravity: { y: 0 },
+        debug: false
+    }
+  },
   dom: {
     createContainer: true,
   },
