@@ -13,7 +13,7 @@ const theme = {
   }
 }
 
-C4C.Editor.create(document.body, null, true);
+C4C.Editor.create(document.body, null, true, ["moveRight", "moveLeft"]);
 
 var config = {
   parent: "body",
